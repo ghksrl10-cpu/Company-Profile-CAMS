@@ -260,6 +260,7 @@ const firebaseConfig = {
 };
 const COL = 'fivees';
 const SETTINGS_DOC = 'fivees';
+const LAYOUT_DOC = 'fivees_layout';
 </script>
 <script>
 /* ===== 체크리스트 (185점 만점) ===== */
@@ -376,12 +377,24 @@ async function loadAll(){
     const s=await db.collection('settings').doc(SETTINGS_DOC).get();
     if(s.exists){SETTINGS=s.data()||{};}
   }catch(e){SETTINGS={};}
+  try{
+    const sl=await db.collection('settings').doc(LAYOUT_DOC).get();
+    if(sl.exists&&sl.data().layout)SETTINGS.layout=sl.data().layout;
+  }catch(e){}
   if(!SETTINGS.zonePhotos)SETTINGS.zonePhotos={};
   ZONES.forEach(z=>{if(!SETTINGS.zonePhotos[z.key])SETTINGS.zonePhotos[z.key]=[];});
   if(SETTINGS.layout===undefined)SETTINGS.layout='';
 }
 
-async function saveSettings(){if(!db)return;await db.collection('settings').doc(SETTINGS_DOC).set(SETTINGS);}
+async function saveSettings(){
+  if(!db)return;
+  const {layout:_,...rest}=SETTINGS;
+  await db.collection('settings').doc(SETTINGS_DOC).set(rest);
+}
+async function saveLayout(){
+  if(!db)return;
+  await db.collection('settings').doc(LAYOUT_DOC).set({layout:SETTINGS.layout||''});
+}
 
 async function saveRecord(ym){
   const rec=DB[ym];if(!rec||!db)return;
@@ -739,10 +752,9 @@ async function setLayout(input){
   const f=input.files[0];if(!f)return;
   if(!checkAdmin()){input.value='';return;}
   try{
-    const d=await compressImage(f,1600,0.7);
-    if(d.length>980000){alert('이미지가 너무 큽니다.');input.value='';return;}
+    const d=await compressImage(f,1400,0.55);
     SETTINGS.layout=d;renderDash();
-    saveSettings().catch(e=>alert('클라우드 저장 실패:\n'+e.message));
+    saveLayout().catch(e=>alert('클라우드 저장 실패:\n'+e.message));
   }catch(e){alert('이미지 처리 실패: '+e.message);}
   input.value='';
 }
