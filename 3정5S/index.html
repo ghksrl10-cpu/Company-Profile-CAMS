@@ -990,7 +990,7 @@ function renderImprovList(){
       <div class="impr-meta">
         <span>📅 ${escHtml(r.date||'')}</span>
         ${r.before_photos.length?`<span>📷 개선전 ${r.before_photos.length}장</span>`:''}
-        ${r.root_photos.length?`<span>📷 근본재발방지 ${r.root_photos.length}장</span>`:''}
+        ${r.root_photos.length?`<span>📷 개선 후 ${r.root_photos.length}장</span>`:''}
         ${r.schedule.즉시?`<span>즉시 ${escHtml(r.schedule.즉시)}</span>`:''}
       </div>
     </div>`;
@@ -1031,7 +1031,7 @@ function openImprovForm(id){
     <div class="impr-ba">
       ${impPhotoBox('before','🔴 개선 전',r.before_photos,r.before_desc)}
       ${impPhotoBox('temp','🟡 임시 조치현황',r.temp_photos,r.temp_desc)}
-      ${impPhotoBox('root','🟢 근본재발방지',r.root_photos,r.root_desc)}
+      ${impPhotoBox('root','🟢 개선 후',r.root_photos,r.root_desc)}
     </div>
     <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
       <button class="btn pri" onclick="saveImprov()">💾 저장</button>
