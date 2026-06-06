@@ -957,6 +957,17 @@ function blankImprov(){
   return{no:'',process:'',worker:'',date:'',schedule:{즉시:'',단기:'',장기:''},note:'',
     problem:'',before_photos:[],before_desc:'',temp_photos:[],temp_desc:'',root_photos:[],root_desc:''};
 }
+function dateToQuarter(d){
+  if(!d)return'';
+  const [y,m]=d.split('-').map(Number);
+  if(!y||!m)return'';
+  return`${y} ${Math.ceil(m/3)}분기`;
+}
+function autoQuarter(){
+  const d=document.getElementById('imp_date');
+  const n=document.getElementById('imp_note');
+  if(d&&n)n.value=dateToQuarter(d.value);
+}
 function pickZone(btn,label){
   document.querySelectorAll('#impZoneChips .zchip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -1004,13 +1015,13 @@ function openImprovForm(id){
         </select>
       </label>
       <label style="flex:2">담당자<input id="imp_worker" value="${escHtml(r.worker)}" placeholder="예) 최연상 팀장"></label>
-      <label>발췌일<input id="imp_date" value="${escHtml(r.date)}" placeholder="예) 2025-01-15"></label>
+      <label>발췌일<input id="imp_date" type="date" value="${escHtml(r.date)}" oninput="autoQuarter()"></label>
+      <label>분기<input id="imp_note" value="${escHtml(r.note)}" placeholder="자동입력" readonly style="background:#0a0c12;color:#93c5fd;cursor:default"></label>
     </div>
     <div class="frow">
-      <label>즉시<input id="imp_s0" value="${escHtml(r.schedule.즉시)}" placeholder="날짜"></label>
-      <label>단기<input id="imp_s1" value="${escHtml(r.schedule.단기)}" placeholder="날짜"></label>
-      <label>장기<input id="imp_s2" value="${escHtml(r.schedule.장기)}" placeholder="날짜"></label>
-      <label style="flex:3">비고<input id="imp_note" value="${escHtml(r.note)}"></label>
+      <label>즉시<input id="imp_s0" type="date" value="${escHtml(r.schedule.즉시)}"></label>
+      <label>단기<input id="imp_s1" type="date" value="${escHtml(r.schedule.단기)}"></label>
+      <label>장기<input id="imp_s2" type="date" value="${escHtml(r.schedule.장기)}"></label>
     </div>
     <div class="frow">
       <label style="flex:1;min-width:100%">문제점
