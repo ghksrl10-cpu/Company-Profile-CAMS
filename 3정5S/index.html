@@ -954,7 +954,7 @@ function buildStatic(ym){
 
 /* ===== 개선현황 ===== */
 function blankImprov(){
-  return{no:'',process:'',worker:'',date:'',schedule:{즉시:'',단기:'',장기:''},note:'',
+  return{no:'',process:'',worker:'',date:'',note:'',
     problem:'',before_photos:[],before_desc:'',temp_photos:[],temp_desc:'',root_photos:[],root_desc:''};
 }
 function dateToQuarter(d){
@@ -991,7 +991,6 @@ function renderImprovList(){
         <span>📅 ${escHtml(r.date||'')}</span>
         ${r.before_photos.length?`<span>📷 개선전 ${r.before_photos.length}장</span>`:''}
         ${r.root_photos.length?`<span>📷 개선 후 ${r.root_photos.length}장</span>`:''}
-        ${r.schedule.즉시?`<span>즉시 ${escHtml(r.schedule.즉시)}</span>`:''}
       </div>
     </div>`;
   }).join('');
@@ -1017,11 +1016,6 @@ function openImprovForm(id){
       <label style="flex:2">담당자<input id="imp_worker" value="${escHtml(r.worker)}" placeholder="예) 최연상 팀장"></label>
       <label>발췌일<input id="imp_date" type="date" value="${escHtml(r.date)}" oninput="autoQuarter()"></label>
       <label>분기<input id="imp_note" value="${escHtml(r.note)}" placeholder="자동입력" readonly style="background:#0a0c12;color:#93c5fd;cursor:default"></label>
-    </div>
-    <div class="frow">
-      <label>즉시<input id="imp_s0" type="date" value="${escHtml(r.schedule.즉시)}"></label>
-      <label>단기<input id="imp_s1" type="date" value="${escHtml(r.schedule.단기)}"></label>
-      <label>장기<input id="imp_s2" type="date" value="${escHtml(r.schedule.장기)}"></label>
     </div>
     <div class="frow">
       <label style="flex:1;min-width:100%">문제점
@@ -1091,7 +1085,6 @@ async function saveImprov(){
   r.process=g('imp_proc').value.trim();
   r.worker=g('imp_worker').value.trim();
   r.date=g('imp_date').value.trim();
-  r.schedule={즉시:g('imp_s0').value.trim(),단기:g('imp_s1').value.trim(),장기:g('imp_s2').value.trim()};
   r.note=g('imp_note').value.trim();
   r.problem=g('imp_prob').value.trim();
   r.before_desc=g('imp_desc_before').value.trim();
