@@ -12,7 +12,6 @@
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:"맑은 고딕","Malgun Gothic",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px}
-  a{color:inherit}
   .app{display:flex;min-height:100vh}
   .side{width:230px;background:var(--side);border-right:1px solid var(--bd);position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;z-index:30}
   .brand{display:flex;align-items:center;gap:10px;padding:18px 16px;border-bottom:1px solid var(--line)}
@@ -35,22 +34,16 @@
   .btn:hover{background:#2a2d35}
   .btn.pri{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.pri:hover{background:var(--blue2)}
   .save-note{font-size:13px;color:var(--mut)}.save-note b{color:var(--ok)}
-  /* 카드 */
   .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
   .card{background:#1a1d24;border:1px solid var(--bd);border-radius:14px;padding:16px 18px}
   .card .ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:10px}
-  .card .num{font-size:30px;font-weight:800;line-height:1}.card .lab{color:var(--mut);font-size:13px;margin-top:6px}
+  .card .num{font-size:28px;font-weight:800;line-height:1}.card .lab{color:var(--mut);font-size:13px;margin-top:6px}
   .ic.b{background:#dbeafe;color:#2563eb}.ic.g{background:var(--okbg);color:var(--ok)}
   .ic.r{background:var(--ngbg);color:var(--ng)}.ic.y{background:#fef3c7;color:#b45309}
   .charts{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
   .chart-box{background:#1a1d24;border:1px solid var(--bd);border-radius:14px;padding:16px}
   .chart-box h3{margin:0 0 12px;font-size:15px;display:flex;align-items:center;gap:7px}
   .cv-wrap{position:relative;height:260px}
-  /* 탭/바 */
-  .tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-  .tab{padding:10px 18px;border:1px solid var(--bd);background:#1a1d24;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;color:#cbd5e1}
-  .tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-  .tab.add{background:#0f1117;color:var(--mut);font-weight:600}
   .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#1a1d24;border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:12px}
   .bar label{font-weight:700;color:#cbd5e1}
   .bar input,.bar select{padding:8px;border:1px solid var(--bd);border-radius:8px;font-size:14px;background:#0f1117;color:#f1f5f9}
@@ -64,9 +57,7 @@
   th,td{border:1px solid var(--bd);padding:6px 8px;text-align:center;vertical-align:middle}
   th{background:var(--hd2);font-weight:700;font-size:13px;white-space:nowrap}
   .rno{background:var(--hd2);font-weight:800;font-size:13px;width:32px}
-  .rgrp{background:var(--hd2);font-weight:800;font-size:13px;width:80px;white-space:nowrap}
   .ritem{text-align:left;padding-left:10px;font-size:13px;line-height:1.4;min-width:200px}
-  /* 점수 */
   .sp-wrap{display:flex;gap:3px;justify-content:center;min-width:172px}
   .sp{width:32px;height:30px;border:1px solid var(--bd);border-radius:6px;cursor:pointer;font-weight:800;font-size:13px;background:#161820;color:#4b5563;display:flex;align-items:center;justify-content:center;flex-shrink:0;user-select:none}
   .sp:hover{color:#e2e8f0;border-color:#6b7280}
@@ -75,7 +66,6 @@
   .sp.on.s3{background:#713f12;color:#fde68a;border-color:#92400e}
   .sp.on.s4{background:#14532d;color:#86efac;border-color:#166534}
   .sp.on.s5{background:#052e16;color:#4ade80;border-color:#16a34a}
-  /* 행 왼쪽 색 라인 (점수별) */
   tr.rs1>td:first-child{border-left:3px solid #991b1b}
   tr.rs2>td:first-child{border-left:3px solid #c2410c}
   tr.rs3>td:first-child{border-left:3px solid #b45309}
@@ -83,14 +73,12 @@
   tr.rs5>td:first-child{border-left:3px solid #16a34a}
   .text-in{width:100%;min-width:100px;border:1px solid var(--bd);border-radius:6px;background:#0a0c12;color:#f1f5f9;padding:5px 7px;font-size:12px;font-family:inherit}
   .text-in:focus{outline:none;border-color:var(--blue);background:#0c1422}
-  /* 총점 뱃지 */
   .score-badge{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:800}
   .sb-hi{background:#052e16;color:#4ade80}.sb-mid{background:#422006;color:#fde68a}.sb-lo{background:#2d0a0a;color:#fca5a5}
-  /* 사진 */
   .photos{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
   .ph{position:relative}
   .ph img{width:128px;height:96px;object-fit:cover;border:1px solid var(--bd);border-radius:8px;cursor:pointer}
-  .ph .del{position:absolute;top:-7px;right:-7px;background:#fff;border:1px solid var(--bd);border-radius:50%;width:24px;height:24px;cursor:pointer;font-weight:700;color:var(--ng);font-size:15px;line-height:24px}
+  .ph .del{position:absolute;top:-7px;right:-7px;background:#fff;border:1px solid var(--bd);border-radius:50%;width:24px;height:24px;cursor:pointer;font-weight:700;color:var(--ng);font-size:15px;line-height:24px;text-align:center}
   .ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
   @media(max-width:700px){.ba{grid-template-columns:1fr}}
   .ba-box{border:1px solid var(--bd);border-radius:10px;overflow:hidden}
@@ -98,18 +86,24 @@
   .ba-box.before .ba-h{background:#3a1d1d;color:#fca5a5}
   .ba-box.after .ba-h{background:#0e2a1a;color:#86efac}
   .ba-body{padding:10px}
+  /* 구역 탭 */
+  .ztabs{display:flex;gap:6px;flex-wrap:wrap;padding:12px 12px 0}
+  .ztab{padding:7px 14px;border:1px solid var(--bd);background:#161820;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;color:#94a3b8}
+  .ztab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  /* 메인 구역 갤러리 */
+  .zone-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+  .zone-card{background:#1a1d24;border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+  .zone-card-h{padding:10px 14px;background:var(--hd2);font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bd)}
+  .zone-card-body{padding:10px}
+  .zone-photos-row{display:flex;flex-wrap:wrap;gap:8px}
+  .zone-photos-row .ph img{width:110px;height:82px}
   /* 이력 */
   .rep-head{font-size:15px;font-weight:700;margin:10px 0}
   .rep-sec{margin-bottom:10px}
   .rep-sech{background:var(--hd);font-weight:800;padding:6px 10px;border:1px solid var(--bd);border-bottom:0;font-size:14px;display:flex;align-items:center;gap:8px}
   .rep-tools{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-  .badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px}
-  .badge.zone{background:#e0e7ff;color:var(--blue2)}
   .unit{font-size:12px;color:var(--mut)}
-  /* 레이아웃 */
   #layoutImg{width:100%;border:1px solid var(--bd);border-radius:8px;cursor:pointer;background:#0b0d12}
-  #dashPhotos{display:flex;flex-direction:column;gap:10px;margin-top:6px}
-  #dashPhotos .ph img{width:100%;height:auto;max-height:none}
   #overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);display:flex;align-items:center;justify-content:center;text-align:center;font-size:17px;font-weight:700;color:#f1f5f9;z-index:80;padding:20px;line-height:1.6}
   .hamb{display:none}
   @media(max-width:820px){
@@ -119,6 +113,7 @@
     .hamb{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--bd);border-radius:10px;background:#1a1d24;color:#f1f5f9;font-size:20px;cursor:pointer}
     .cards{grid-template-columns:repeat(2,1fr)}
     .charts{grid-template-columns:1fr}
+    .zone-gallery{grid-template-columns:1fr}
     .page-h h1{font-size:19px}
     .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25}
     .scrim.show{display:block}
@@ -164,7 +159,7 @@
 
   <main class="main">
 
-    <!-- 메인 대시보드 -->
+    <!-- ===== 메인 대시보드 ===== -->
     <section class="view" id="view-dash">
       <div class="page-h">
         <button class="hamb" onclick="toggleNav(true)">☰</button>
@@ -173,6 +168,8 @@
         <button class="btn" onclick="reloadFromServer()">🔄 새로고침</button>
         <div class="sub">3정5S 점검 현황을 한눈에 확인하세요</div>
       </div>
+
+      <!-- 레이아웃 이미지 -->
       <div class="chart-box" style="margin-bottom:18px">
         <h3>🗺️ 구획별 LAY-OUT
           <span class="grow"></span>
@@ -181,44 +178,39 @@
         <img id="layoutImg" src="" onclick="this.src&&window.open(this.src,'_blank')" style="display:none">
         <div id="layoutEmpty" class="hint">＋ 버튼으로 구획별 LAY-OUT 이미지를 등록하면 여기에 고정 표시됩니다.</div>
       </div>
+
+      <!-- 통계 카드 -->
       <div class="cards" id="cards"></div>
+
+      <!-- 차트 -->
       <div class="charts">
         <div class="chart-box"><h3>📈 월별 점수 추이</h3><div class="cv-wrap"><canvas id="cM"></canvas></div></div>
-        <div class="chart-box"><h3>🏭 구역별 평균 점수</h3><div class="cv-wrap"><canvas id="cZ"></canvas></div></div>
+        <div class="chart-box"><h3>📊 항목별 최근 점수</h3><div class="cv-wrap"><canvas id="cZ"></canvas></div></div>
       </div>
       <div class="chart-box" style="margin-top:14px">
-        <h3>📊 항목별 평균 점수 (전체 기록 기준)</h3>
+        <h3>📊 항목별 전체 평균</h3>
         <div class="cv-wrap" style="height:300px"><canvas id="cC"></canvas></div>
       </div>
-      <div class="charts" style="margin-top:14px;grid-template-columns:1fr 1fr">
-        <div class="chart-box"><h3>📌 안내</h3>
-          <div class="hint" style="font-size:14px;line-height:1.9">
-            · 점검 입력은 왼쪽 <b>✏️ 점검 입력</b> 메뉴에서 합니다.<br>
-            · 위 탭에서 구역(A~E)을 고르고 1~5점으로 점검하세요.<br>
-            · 지적사항·조치확인 메모와 조치 전/후 사진을 첨부하세요.<br>
-            · 모든 데이터는 클라우드에 자동 저장되어 폰·PC 공유됩니다.
-          </div>
-        </div>
-        <div class="chart-box">
-          <h3>📷 참고 사진
-            <span class="grow"></span>
-            <label class="btn" style="font-size:13px;padding:5px 10px">＋ 추가<input type="file" accept="image/*" style="display:none" onchange="addDashPhoto(this)"></label>
-          </h3>
-          <div id="dashPhotos"></div>
-        </div>
+
+      <!-- 구역별 사진 갤러리 -->
+      <div class="chart-box" style="margin-top:14px">
+        <h3>📷 구역별 현장 사진
+          <span class="grow"></span>
+          <span style="font-size:12px;color:var(--mut);font-weight:400">구역을 클릭해 사진을 추가/삭제하세요</span>
+        </h3>
+        <div id="zoneGallery"></div>
       </div>
     </section>
 
-    <!-- 점검 입력 -->
+    <!-- ===== 점검 입력 ===== -->
     <section class="view" id="view-input" style="display:none">
       <div class="page-h">
         <button class="hamb" onclick="toggleNav(true)">☰</button>
-        <h1 id="inTitle">점검 입력</h1>
+        <h1>점검 입력</h1>
         <span class="grow"></span>
         <span class="save-note" id="saveNote"></span>
       </div>
-      <div class="tabs" id="zoneTabs"></div>
-      <div class="bar" id="inputBar">
+      <div class="bar">
         <label>점검일</label>
         <input class="date-in" id="dy" type="number" inputmode="numeric"> 년
         <input class="date-in" id="dm" type="number" inputmode="numeric"> 월
@@ -232,20 +224,20 @@
         <button class="btn pri" onclick="saveNow()">💾 저장</button>
       </div>
       <div class="hint">
-        · 각 항목을 <b>1~5점</b>으로 평가하세요. 5점=매우 양호 / 3점=보통 / 1점=매우 불량
+        · 각 항목을 <b>1~5점</b>으로 평가하세요. 5점=매우 양호 / 3점=보통 / 1점=매우 불량&nbsp;&nbsp;
         · 미흡한 항목은 <b>지적사항</b>·<b>조치확인</b>란을 채우세요.
       </div>
       <div id="sections"></div>
     </section>
 
-    <!-- 이력 조회 -->
+    <!-- ===== 이력 조회 ===== -->
     <section class="view" id="view-history" style="display:none">
       <div class="page-h">
         <button class="hamb" onclick="toggleNav(true)">☰</button>
         <h1>이력 조회</h1>
         <span class="grow"></span>
         <button class="btn" onclick="reloadFromServer()">🔄 새로고침</button>
-        <div class="sub">월별·구역별 점검 기록을 조회하고 인쇄(PDF)할 수 있습니다</div>
+        <div class="sub">월별 점검 기록을 조회하고 인쇄(PDF)할 수 있습니다</div>
       </div>
       <div id="histList"></div>
       <div id="histDetail"></div>
@@ -270,7 +262,7 @@ const COL = 'fivees';
 const SETTINGS_DOC = 'fivees';
 </script>
 <script>
-/* ===== 실제 캠스 3정5S CHECK LIST ===== */
+/* ===== 체크리스트 (185점 만점) ===== */
 const CHECK_GROUPS = [
   {grp:'설비관리', items:[
     '사출기 내·외부 바닥 오일 및 냉각수 누수상태',
@@ -330,14 +322,24 @@ const CHECK_GROUPS = [
     '부적합품 보관상태',
   ]},
 ];
-const GRAND_MAX = CHECK_GROUPS.reduce((s,g)=>s+g.items.length*5,0); // 185점
+const GRAND_MAX = CHECK_GROUPS.reduce((s,g)=>s+g.items.length*5,0); // 185
 
-const DEFAULT_ZONES = ['A구역 (사출)','B구역 (B/P조립)','C구역 (보전반)','D구역 (도장)','E구역 (C/PAD)'];
+/* 구역 정의 */
+const ZONES = [
+  {key:'A', label:'A구역 (사출)'},
+  {key:'B', label:'B구역 (B/P조립)'},
+  {key:'C', label:'C구역 (보전반)'},
+  {key:'D', label:'D구역 (도장)'},
+  {key:'E', label:'E구역 (C/PAD)'},
+];
 
-let curZone='', curRecId='', DB={}, db=null;
-let SETTINGS={zones:[],layout:'',dashPhotos:[]};
+/* ===== 상태 ===== */
+let curRecId='', curPhotoZone='A', DB={}, db=null;
+/* SETTINGS.zonePhotos = {A:[{url,name},...], B:[...], ...}  ← 메인 고정 사진 */
+let SETTINGS={layout:'',zonePhotos:{A:[],B:[],C:[],D:[],E:[]}};
 const ADMIN_PIN='103518';
 let _authed=false;
+
 function checkAdmin(){
   if(_authed)return true;
   const v=prompt('🔒 관리자 비밀번호');
@@ -345,7 +347,7 @@ function checkAdmin(){
   if(v!==null)alert('비밀번호가 틀렸습니다.');
   return false;
 }
-function docId(zone,ym){return zone.replace(/[^a-zA-Z가-힣0-9_-]/g,'-')+'__'+ym;}
+function docId(ym){return'rec__'+ym;}
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 /* ===== Firebase ===== */
@@ -355,43 +357,62 @@ function fbInit(){
 }
 function showOverlay(html){const o=document.getElementById('overlay');o.innerHTML=html;o.style.display='flex';}
 function hideOverlay(){document.getElementById('overlay').style.display='none';}
+
 async function loadAll(){
   const snap=await db.collection(COL).get();
   DB={};
   snap.forEach(d=>{
-    const v=d.data();if(!v.zone)return;
-    if(!DB[v.zone])DB[v.zone]={records:{}};
-    DB[v.zone].records[v.ym]={
+    const v=d.data();
+    if(!d.id.startsWith('rec__')||!v.ym)return;
+    DB[v.ym]={
       date:v.date||{y:'',m:'',d:''},
       checker:v.checker||'',
       checklist:v.checklist||{},
-      before:v.before||[],after:v.after||[],
+      zonePhotos:v.zonePhotos||initZP(),
     };
   });
-  try{const s=await db.collection('settings').doc(SETTINGS_DOC).get();SETTINGS=s.exists?(s.data()||{}):{};} catch(e){SETTINGS={};}
-  if(!SETTINGS.zones||!SETTINGS.zones.length)SETTINGS.zones=[...DEFAULT_ZONES];
-  if(!SETTINGS.dashPhotos)SETTINGS.dashPhotos=[];
+  try{
+    const s=await db.collection('settings').doc(SETTINGS_DOC).get();
+    if(s.exists){SETTINGS=s.data()||{};}
+  }catch(e){SETTINGS={};}
+  if(!SETTINGS.zonePhotos)SETTINGS.zonePhotos={};
+  ZONES.forEach(z=>{if(!SETTINGS.zonePhotos[z.key])SETTINGS.zonePhotos[z.key]=[];});
   if(SETTINGS.layout===undefined)SETTINGS.layout='';
-  Object.keys(DB).forEach(z=>{if(!SETTINGS.zones.includes(z))SETTINGS.zones.push(z);});
 }
+
 async function saveSettings(){if(!db)return;await db.collection('settings').doc(SETTINGS_DOC).set(SETTINGS);}
-async function saveRecord(zone,id){
-  const rec=DB[zone]&&DB[zone].records[id];if(!rec||!db)return;
-  await db.collection(COL).doc(docId(zone,id)).set({
-    zone,ym:id,date:rec.date,checker:rec.checker||'',
-    checklist:rec.checklist||{},before:rec.before||[],after:rec.after||[],
+
+async function saveRecord(ym){
+  const rec=DB[ym];if(!rec||!db)return;
+  await db.collection(COL).doc(docId(ym)).set({
+    ym,
+    date:rec.date,
+    checker:rec.checker||'',
+    checklist:rec.checklist||{},
+    zonePhotos:rec.zonePhotos||initZP(),
     updatedAt:firebase.firestore.FieldValue.serverTimestamp()
   });
 }
+
 let saveTimer=null,saving=false,dirty=false;
 function note(html){const n=document.getElementById('saveNote');if(n)n.innerHTML=html;}
 function persist(){dirty=true;note('저장 대기…');if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(flush,800);}
 async function flush(){
-  if(!dirty||saving||!curRecId||!curZone)return;saving=true;dirty=false;note('저장 중…');
-  try{await saveRecord(curZone,curRecId);const t=new Date();note('<b>저장됨</b> · '+t.getHours()+':'+String(t.getMinutes()).padStart(2,'0'));}
-  catch(e){dirty=true;note('저장 실패 — 재시도');if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(flush,2000);}
+  if(!dirty||saving||!curRecId)return;saving=true;dirty=false;note('저장 중…');
+  try{
+    await saveRecord(curRecId);
+    const t=new Date();note('<b>저장됨</b> · '+t.getHours()+':'+String(t.getMinutes()).padStart(2,'0'));
+  }catch(e){dirty=true;note('저장 실패 — 재시도');if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(flush,2000);}
   saving=false;if(dirty){if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(flush,800);}
 }
+
+/* ===== 레코드 ===== */
+function initZP(){const o={};ZONES.forEach(z=>{o[z.key]={before:[],after:[]};});return o;}
+function blankRecord(){
+  const cl={};CHECK_GROUPS.forEach((g,ci)=>g.items.forEach((_,ii)=>{cl[ci+'_'+ii]={score:0,issue:'',action:''};} ));
+  return{date:{y:'',m:'',d:''},checker:'',checklist:cl,zonePhotos:initZP()};
+}
+function cur(){return curRecId?DB[curRecId]:null;}
 
 /* ===== 뷰 전환 ===== */
 function showView(v){
@@ -400,7 +421,7 @@ function showView(v){
   document.getElementById('view-'+v).style.display='block';
   if(v==='dash')renderDash();
   if(v==='history')openHistory();
-  if(v==='input')render();
+  if(v==='input'){refreshRecSelect();render();}
   toggleNav(false);
 }
 function toggleNav(open){
@@ -408,73 +429,42 @@ function toggleNav(open){
   document.getElementById('scrim').classList.toggle('show',open);
 }
 
-/* ===== 구역/기록 ===== */
-function blankRecord(){
-  const cl={};
-  CHECK_GROUPS.forEach((g,ci)=>g.items.forEach((_,ii)=>{cl[ci+'_'+ii]={score:0,issue:'',action:''};} ));
-  return{date:{y:'',m:'',d:''},checker:'',checklist:cl,before:[],after:[]};
-}
-function switchZone(zone){
-  curZone=zone;if(!DB[zone])DB[zone]={records:{}};
-  renderZoneTabs();refreshRecSelect();
-  const ids=Object.keys(DB[zone].records).sort();
-  if(ids.length)loadRecord(ids[ids.length-1]);else newRecord(true);
-}
-function renderZoneTabs(){
-  const wrap=document.getElementById('zoneTabs');if(!wrap)return;
-  wrap.innerHTML=
-    (SETTINGS.zones||[]).map(z=>`<div class="tab ${z===curZone?'active':''}" onclick="switchZone(${JSON.stringify(z).replace(/"/g,'&quot;')})">${escHtml(z)}</div>`).join('')
-    +`<div class="tab add" onclick="addZone()">＋ 구역 추가</div>`;
-}
-function addZone(){
-  const name=(prompt('새 구역 이름\n예: F구역 (신공장)','')||'').trim();
-  if(!name)return;
-  if(SETTINGS.zones.includes(name)){switchZone(name);return;}
-  SETTINGS.zones.push(name);if(!DB[name])DB[name]={records:{}};
-  saveSettings().catch(e=>alert('저장 실패: '+e.message));
-  switchZone(name);newRecord(true);
-}
+/* ===== 기록 관리 ===== */
 function refreshRecSelect(){
   const sel=document.getElementById('recSel');if(!sel)return;
-  const ids=curZone&&DB[curZone]?Object.keys(DB[curZone].records).sort().reverse():[];
+  const ids=Object.keys(DB).sort().reverse();
   sel.innerHTML=ids.map(id=>`<option value="${id}">${id.replace('-','년 ')}월</option>`).join('')||'<option value="">(기록 없음)</option>';
+  if(curRecId&&ids.includes(curRecId))sel.value=curRecId;
 }
-function newRecord(silent){
-  if(!curZone){addZone();return;}
+function newRecord(){
   const t=new Date();let y=t.getFullYear(),m=t.getMonth()+1;
-  if(!silent){
-    const inp=prompt('새 기록 (년-월)\n예: '+y+'-'+String(m).padStart(2,'0'),y+'-'+String(m).padStart(2,'0'));
-    if(!inp)return;
-    const mt=inp.match(/(\d{4})\D+(\d{1,2})/);if(!mt){alert('형식: 2026-06');return;}
-    y=+mt[1];m=+mt[2];
-  }
+  const inp=prompt('새 기록 (년-월)\n예: '+y+'-'+String(m).padStart(2,'0'),y+'-'+String(m).padStart(2,'0'));
+  if(!inp)return;
+  const mt=inp.match(/(\d{4})\D+(\d{1,2})/);if(!mt){alert('형식: 2026-06');return;}
+  y=+mt[1];m=+mt[2];
   const id=y+'-'+String(m).padStart(2,'0');
-  if(!DB[curZone].records[id]){
-    const rec=blankRecord();rec.date={y:String(y),m:String(m),d:''};
-    DB[curZone].records[id]=rec;curRecId=id;persist();
-  }
+  if(!DB[id]){const rec=blankRecord();rec.date={y:String(y),m:String(m),d:''};DB[id]=rec;curRecId=id;persist();}
   refreshRecSelect();loadRecord(id);
 }
 function loadRecord(id){
-  if(!id||!curZone||!DB[curZone].records[id])return;
-  curRecId=id;const sel=document.getElementById('recSel');if(sel)sel.value=id;
-  const rec=DB[curZone].records[id];
+  if(!id||!DB[id])return;
+  curRecId=id;
+  const sel=document.getElementById('recSel');if(sel)sel.value=id;
+  const rec=DB[id];
   document.getElementById('dy').value=rec.date.y||id.split('-')[0];
   document.getElementById('dm').value=rec.date.m||(+id.split('-')[1]);
   document.getElementById('dd').value=rec.date.d||'';
   document.getElementById('dchecker').value=rec.checker||'';
   render();
 }
-function cur(){return curZone&&curRecId?DB[curZone].records[curRecId]:null;}
 
 /* ===== 입력 화면 렌더 ===== */
-function scoreClass(s){return s>=4?'sb-hi':s===3?'sb-mid':s>0?'sb-lo':'';}
 function render(){
-  const tt=document.getElementById('inTitle');
-  if(tt)tt.textContent='점검 입력'+(curZone?' · '+curZone:'');
-  renderZoneTabs();
   const root=document.getElementById('sections');if(!root)return;
-  if(!curZone){root.innerHTML='<div class="sec"><div style="padding:24px;text-align:center;color:var(--mut)">위 <b>구역</b> 탭을 클릭하거나 <b>＋ 구역 추가</b>로 시작하세요.</div></div>';return;}
+  if(!curRecId){
+    root.innerHTML='<div class="sec"><div style="padding:24px;text-align:center;color:var(--mut)"><b>＋ 새 기록</b> 버튼으로 이번 달 점검을 시작하세요.</div></div>';
+    return;
+  }
   const rec=cur();if(!rec){root.innerHTML='';return;}
   root.innerHTML='';
 
@@ -488,15 +478,13 @@ function render(){
     });
     const grpPct=grpMax?(grpScore/grpMax*100).toFixed(0):0;
     const sbCls=grpScore/grpMax>=0.8?'sb-hi':grpScore/grpMax>=0.6?'sb-mid':grpScore>0?'sb-lo':'';
-
     let rows='';
     grp.items.forEach((item,ii)=>{
       const key=ci+'_'+ii;
       const d=rec.checklist[key]||{score:0,issue:'',action:''};
       const sc=d.score||0;
       const pills=[1,2,3,4,5].map(v=>`<div class="sp s${v} ${sc===v?'on':''}" onclick="setScore('${key}',${v})">${v}</div>`).join('');
-      const rsCls=sc>0?'rs'+sc:'';
-      rows+=`<tr class="${rsCls}">
+      rows+=`<tr class="${sc>0?'rs'+sc:''}">
         <td class="rno">${itemNo++}</td>
         <td class="ritem">${escHtml(item)}</td>
         <td style="min-width:180px"><div class="sp-wrap">${pills}</div></td>
@@ -504,7 +492,6 @@ function render(){
         <td style="min-width:130px"><input class="text-in" value="${escHtml(d.action)}" placeholder="조치확인" oninput="setField('${key}','action',this.value)"></td>
       </tr>`;
     });
-
     const div=document.createElement('div');div.className='sec';
     div.innerHTML=`
       <div class="sec-h">
@@ -515,21 +502,14 @@ function render(){
         ${grpHasIssue?'<span style="font-size:12px;color:#fde68a">⚠ 지적사항 있음</span>':''}
       </div>
       <div class="scroll"><table>
-        <tr>
-          <th class="rno">NO</th>
-          <th>점검항목</th>
-          <th style="min-width:180px">점검결과 (1~5점)</th>
-          <th style="min-width:130px">지적사항</th>
-          <th style="min-width:130px">조치확인</th>
-        </tr>
+        <tr><th class="rno">NO</th><th>점검항목</th><th style="min-width:180px">점검결과 (1~5점)</th><th style="min-width:130px">지적사항</th><th style="min-width:130px">조치확인</th></tr>
         ${rows}
       </table></div>`;
     root.appendChild(div);
   });
 
-  /* 전체 점수 요약 */
-  let total=0;
-  CHECK_GROUPS.forEach((g,ci)=>g.items.forEach((_,ii)=>{total+=(rec.checklist[ci+'_'+ii]||{}).score||0;}));
+  /* 합계 */
+  let total=0;CHECK_GROUPS.forEach((g,ci)=>g.items.forEach((_,ii)=>{total+=(rec.checklist[ci+'_'+ii]||{}).score||0;}));
   const pct=GRAND_MAX?(total/GRAND_MAX*100).toFixed(1):0;
   const sumDiv=document.createElement('div');sumDiv.className='sec';
   sumDiv.innerHTML=`<div class="sec-h" style="font-size:16px">
@@ -538,22 +518,35 @@ function render(){
   </div>`;
   root.appendChild(sumDiv);
 
-  /* 조치 전/후 사진 */
-  const ba=document.createElement('div');ba.className='sec';
-  ba.innerHTML=`<div class="sec-h">📷 조치 전 / 조치 후 사진 <span class="stat">전 ${rec.before.length}장 · 후 ${rec.after.length}장</span></div>
+  /* 구역별 사진 */
+  const zpSec=document.createElement('div');zpSec.className='sec';
+  const zp=rec.zonePhotos||initZP();
+  let totalPh=0;ZONES.forEach(z=>{const zz=zp[z.key]||{};totalPh+=(zz.before||[]).length+(zz.after||[]).length;});
+  const ztabsHtml=ZONES.map(z=>{
+    const zz=zp[z.key]||{};const cnt=(zz.before||[]).length+(zz.after||[]).length;
+    return`<div class="ztab ${z.key===curPhotoZone?'active':''}" onclick="setPhotoZone('${z.key}')">${escHtml(z.label)}${cnt?` (${cnt})`:''}</div>`;
+  }).join('');
+  const czp=zp[curPhotoZone]||{before:[],after:[]};
+  zpSec.innerHTML=`
+    <div class="sec-h">📷 구역별 조치 전/후 사진 <span class="stat">전체 ${totalPh}장</span></div>
+    <div class="ztabs">${ztabsHtml}</div>
     <div class="ba">
-      ${baBox('before','🔴 조치 전',rec.before)}
-      ${baBox('after','🟢 조치 후',rec.after)}
+      ${baBox(curPhotoZone,'before','🔴 조치 전',czp.before||[])}
+      ${baBox(curPhotoZone,'after','🟢 조치 후',czp.after||[])}
     </div>`;
-  root.appendChild(ba);
+  root.appendChild(zpSec);
 }
-function baBox(which,label,photos){
-  return`<div class="ba-box ${which}"><div class="ba-h">${label}<span class="grow"></span></div>
+
+function baBox(zk,which,label,photos){
+  return`<div class="ba-box ${which}"><div class="ba-h">${label}</div>
     <div class="ba-body">
-      <label class="btn pri" style="font-size:13px;padding:7px 12px">＋ 촬영 / 추가<input type="file" accept="image/*" capture="environment" style="display:none" onchange="addPhoto(this,'${which}')"></label>
-      <div class="photos">${photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delPhoto('${which}',${i})">✕</div></div>`).join('')}</div>
+      <label class="btn pri" style="font-size:13px;padding:7px 12px">＋ 촬영 / 추가<input type="file" accept="image/*" capture="environment" style="display:none" onchange="addPhoto(this,'${zk}','${which}')"></label>
+      <div class="photos">${photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delPhoto('${zk}','${which}',${i})">✕</div></div>`).join('')}</div>
     </div></div>`;
 }
+
+function setPhotoZone(key){curPhotoZone=key;render();}
+
 function setScore(key,v){
   const r=cur();if(!r)return;
   if(!r.checklist[key])r.checklist[key]={score:0,issue:'',action:''};
@@ -565,92 +558,182 @@ function setField(key,field,v){
   if(!r.checklist[key])r.checklist[key]={score:0,issue:'',action:''};
   r.checklist[key][field]=v;persist();
 }
+
 ['dy','dm','dd'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el)el.addEventListener('change',()=>{
-    const r=cur();if(!r)return;
-    r.date={y:document.getElementById('dy').value,m:document.getElementById('dm').value,d:document.getElementById('dd').value};persist();
+  document.addEventListener('DOMContentLoaded',()=>{
+    const el=document.getElementById(id);
+    if(el)el.addEventListener('change',()=>{const r=cur();if(!r)return;r.date={y:document.getElementById('dy').value,m:document.getElementById('dm').value,d:document.getElementById('dd').value};persist();});
   });
 });
-document.getElementById('dchecker').addEventListener('input',function(){const r=cur();if(!r)return;r.checker=this.value;persist();});
+document.addEventListener('DOMContentLoaded',()=>{
+  const ec=document.getElementById('dchecker');
+  if(ec)ec.addEventListener('input',function(){const r=cur();if(!r)return;r.checker=this.value;persist();});
+});
+
 async function saveNow(){if(saveTimer)clearTimeout(saveTimer);await flush();alert('저장되었습니다.');}
 async function reloadFromServer(){
   showOverlay('새로고침 중…');
-  try{await loadAll();initZone();const a=document.querySelector('.nav-item.active');showView(a?a.dataset.view:'dash');}
-  catch(e){alert('불러오기 실패: '+e.message);}hideOverlay();
+  try{await loadAll();showView(document.querySelector('.nav-item.active')?.dataset.view||'dash');}
+  catch(e){alert('불러오기 실패: '+e.message);}
+  hideOverlay();
 }
 
-/* ===== 사진 ===== */
-function compressImage(file,maxDim,q){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{let w=img.width,h=img.height;if(w>=h&&w>maxDim){h=Math.round(h*maxDim/w);w=maxDim;}else if(h>w&&h>maxDim){w=Math.round(w*maxDim/h);h=maxDim;}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};img.onerror=rej;img.src=r.result;};r.onerror=rej;r.readAsDataURL(file);});}
-async function addPhoto(input,which){
-  const f=input.files[0];if(!f)return;const rec=cur();if(!rec){input.value='';return;}
-  const arr=rec[which];
-  if(arr.length>=6){alert('조치 전/후 각 최대 6장');input.value='';return;}
+/* ===== 사진 압축 ===== */
+function compressImage(file,maxDim,q){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        let w=img.width,h=img.height;
+        if(w>=h&&w>maxDim){h=Math.round(h*maxDim/w);w=maxDim;}
+        else if(h>w&&h>maxDim){w=Math.round(w*maxDim/h);h=maxDim;}
+        const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+        cv.getContext('2d').drawImage(img,0,0,w,h);
+        res(cv.toDataURL('image/jpeg',q));
+      };
+      img.onerror=rej;img.src=r.result;
+    };
+    r.onerror=rej;r.readAsDataURL(file);
+  });
+}
+
+/* 입력 화면 구역 사진 추가/삭제 */
+async function addPhoto(input,zk,which){
+  const f=input.files[0];if(!f)return;
+  const rec=cur();if(!rec){input.value='';return;}
+  if(!rec.zonePhotos)rec.zonePhotos=initZP();
+  if(!rec.zonePhotos[zk])rec.zonePhotos[zk]={before:[],after:[]};
+  const arr=rec.zonePhotos[zk][which];
+  if(arr.length>=4){alert('구역당 전/후 각 최대 4장');input.value='';return;}
   note('사진 처리 중…');
   try{
-    const dataUrl=await compressImage(f,1024,0.55);arr.push({url:dataUrl,name:f.name});
-    const total=(rec.before.concat(rec.after)).reduce((s,p)=>s+(p.url?p.url.length:0),0);
-    if(total>900000){arr.pop();alert('사진 용량 초과. 기존 사진을 지우고 추가하세요.');note('');input.value='';return;}
+    const dataUrl=await compressImage(f,1024,0.55);
+    arr.push({url:dataUrl,name:f.name});
+    let total=0;ZONES.forEach(z=>{const zz=rec.zonePhotos[z.key]||{};[...(zz.before||[]),...(zz.after||[])].forEach(p=>total+=(p.url?p.url.length:0));});
+    if(total>1800000){arr.pop();alert('전체 사진 용량 초과. 기존 사진을 지우고 추가하세요.');note('');input.value='';return;}
     render();note('<b>사진 추가됨</b>');
-    saveRecord(curZone,curRecId).catch(e=>alert('클라우드 저장 실패:\n'+e.message));
+    saveRecord(curRecId).catch(e=>alert('클라우드 저장 실패:\n'+e.message));
   }catch(e){alert('사진 처리 실패: '+e.message);note('');}
   input.value='';
 }
-async function delPhoto(which,i){const rec=cur();if(!rec||!rec[which][i])return;if(!confirm('이 사진을 삭제할까요?'))return;rec[which].splice(i,1);await saveRecord(curZone,curRecId);render();}
+async function delPhoto(zk,which,i){
+  const rec=cur();if(!rec)return;
+  const arr=rec.zonePhotos?.[zk]?.[which];
+  if(!arr||arr[i]===undefined)return;
+  if(!confirm('이 사진을 삭제할까요?'))return;
+  arr.splice(i,1);await saveRecord(curRecId);render();
+}
 
 /* ===== 대시보드 ===== */
 let chM=null,chZ=null,chC=null;
 function recScore(rec){let s=0;CHECK_GROUPS.forEach((g,ci)=>g.items.forEach((_,ii)=>{s+=(rec.checklist[ci+'_'+ii]||{}).score||0;}));return s;}
 function catScore(rec,ci){return CHECK_GROUPS[ci].items.reduce((s,_,ii)=>s+((rec.checklist[ci+'_'+ii]||{}).score||0),0);}
+
 function computeStats(){
   const months={};let total=0,maxTotal=0,recCount=0;
-  const zoneStats={};const catAvg=CHECK_GROUPS.map(()=>({sum:0,cnt:0}));
-  Object.keys(DB).forEach(zone=>{
-    zoneStats[zone]={score:0,max:0,count:0};
-    Object.keys(DB[zone].records).forEach(ym=>{
-      recCount++;const rec=DB[zone].records[ym];
-      const rs=recScore(rec),rm=GRAND_MAX;
-      total+=rs;maxTotal+=rm;
-      zoneStats[zone].score+=rs;zoneStats[zone].max+=rm;zoneStats[zone].count++;
-      months[ym]=months[ym]||{score:0,max:0,count:0};
-      months[ym].score+=rs;months[ym].max+=rm;months[ym].count++;
-      CHECK_GROUPS.forEach((_,ci)=>{const cs=catScore(rec,ci);if(cs>0){catAvg[ci].sum+=cs;catAvg[ci].cnt++;}});
-    });
+  const catAvg=CHECK_GROUPS.map(()=>({sum:0,cnt:0}));
+  let latestYm='',latestScore=0,latestRec=null;
+  Object.keys(DB).sort().forEach(ym=>{
+    recCount++;const rec=DB[ym];
+    const rs=recScore(rec);total+=rs;maxTotal+=GRAND_MAX;
+    months[ym]=rs;
+    CHECK_GROUPS.forEach((_,ci)=>{const cs=catScore(rec,ci);if(cs>0){catAvg[ci].sum+=cs;catAvg[ci].cnt++;}});
+    latestYm=ym;latestScore=rs;latestRec=rec;
   });
-  return{months,total,maxTotal,recCount,zoneStats,catAvg,zoneCount:SETTINGS.zones.length};
+  return{months,total,maxTotal,recCount,catAvg,latestYm,latestScore,latestRec};
 }
+
 function renderDash(){
+  /* 레이아웃 */
   const img=document.getElementById('layoutImg'),em=document.getElementById('layoutEmpty');
   if(SETTINGS.layout){img.src=SETTINGS.layout;img.style.display='block';em.style.display='none';}
   else{img.style.display='none';em.style.display='block';}
+
   const s=computeStats();
-  const pct=s.maxTotal?Math.round(s.total/s.maxTotal*100):0;
+  const avgPct=s.maxTotal?Math.round(s.total/s.maxTotal*100):0;
+  const latestPct=GRAND_MAX?Math.round(s.latestScore/GRAND_MAX*100):0;
+  const lBadge=latestPct>=80?'sb-hi':latestPct>=60?'sb-mid':s.latestScore>0?'sb-lo':'';
+
   document.getElementById('cards').innerHTML=`
-    <div class="card"><div class="ic b">📍</div><div class="num">${s.zoneCount}</div><div class="lab">점검 구역 수</div></div>
-    <div class="card"><div class="ic y">📋</div><div class="num">${s.recCount}</div><div class="lab">점검 기록(월) 수</div></div>
-    <div class="card"><div class="ic g">⭐</div><div class="num">${pct}%</div><div class="lab">전체 평균 점수</div></div>
-    <div class="card"><div class="ic b">📊</div><div class="num">${s.total}<small style="font-size:16px;font-weight:600"> /${s.maxTotal}</small></div><div class="lab">누적 총점</div></div>`;
+    <div class="card"><div class="ic b">📋</div><div class="num">${s.recCount}</div><div class="lab">총 기록(월) 수</div></div>
+    <div class="card"><div class="ic g">⭐</div><div class="num">${s.latestScore||'-'}<small style="font-size:13px;font-weight:600"> /185</small></div><div class="lab">최근 점수</div></div>
+    <div class="card"><div class="ic y">📊</div><div class="num">${avgPct}%</div><div class="lab">전체 평균</div></div>
+    <div class="card"><div class="ic b">📅</div><div class="num" style="font-size:18px">${s.latestYm||'-'}</div><div class="lab">최근 점검월</div></div>`;
+
   const ms=Object.keys(s.months).sort();
   if(chM)chM.destroy();if(chZ)chZ.destroy();if(chC)chC.destroy();
   const C=window.Chart;if(!C)return;
-  const avgPcts=ms.map(m=>s.months[m].max?Math.round(s.months[m].score/s.months[m].max*100):0);
-  chM=new C(document.getElementById('cM'),{type:'line',data:{labels:ms.length?ms.map(m=>m.replace('-','.')):['데이터 없음'],
-    datasets:[{label:'평균 점수(%)',data:avgPcts,borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
-    options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}},plugins:{legend:{position:'bottom'}}}});
-  const zNames=Object.keys(s.zoneStats).filter(z=>s.zoneStats[z].max>0);
-  const zPcts=zNames.map(z=>s.zoneStats[z].max?Math.round(s.zoneStats[z].score/s.zoneStats[z].max*100):0);
-  const zColors=zPcts.map(p=>p>=80?'#16a34a':p>=60?'#ca8a04':'#dc2626');
-  chZ=new C(document.getElementById('cZ'),{type:'bar',data:{labels:zNames.length?zNames:['데이터 없음'],
-    datasets:[{label:'평균(%)',data:zPcts,backgroundColor:zColors,borderRadius:6}]},
-    options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}},plugins:{legend:{display:false}}}});
-  const catLabels=CHECK_GROUPS.map(g=>g.grp);
-  const catPcts=s.catAvg.map((a,i)=>{const mx=CHECK_GROUPS[i].items.length*5;return a.cnt&&mx?Math.round(a.sum/a.cnt/mx*100):0;});
-  const cColors=catPcts.map(p=>p>=80?'rgba(22,163,74,.7)':p>=60?'rgba(202,138,4,.7)':'rgba(220,38,38,.7)');
-  chC=new C(document.getElementById('cC'),{type:'bar',data:{labels:catLabels,
-    datasets:[{label:'항목별 평균(%)',data:catPcts,backgroundColor:cColors,borderRadius:6}]},
-    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',scales:{x:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}},plugins:{legend:{display:false}}}});
-  renderDashPhotos();
+
+  chM=new C(document.getElementById('cM'),{type:'line',data:{
+    labels:ms.length?ms.map(m=>m.replace('-','.')):['데이터 없음'],
+    datasets:[{label:'점수',data:ms.map(m=>s.months[m]),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
+    options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:185,ticks:{callback:v=>v+'점'}}},plugins:{legend:{position:'bottom'}}}});
+
+  const catMaxes=CHECK_GROUPS.map(g=>g.items.length*5);
+  const latestCatPcts=CHECK_GROUPS.map((_,ci)=>{
+    if(!s.latestRec)return 0;
+    const cs=catScore(s.latestRec,ci);
+    return catMaxes[ci]?Math.round(cs/catMaxes[ci]*100):0;
+  });
+  chZ=new C(document.getElementById('cZ'),{type:'bar',data:{
+    labels:CHECK_GROUPS.map(g=>g.grp),
+    datasets:[{label:'최근 점수(%)',data:latestCatPcts,backgroundColor:latestCatPcts.map(p=>p>=80?'rgba(22,163,74,.8)':p>=60?'rgba(202,138,4,.8)':'rgba(220,38,38,.8)'),borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',scales:{x:{min:0,max:100,ticks:{callback:v=>v+'%'}}},plugins:{legend:{display:false}}}});
+
+  const catAvgPcts=s.catAvg.map((a,i)=>a.cnt&&catMaxes[i]?Math.round(a.sum/a.cnt/catMaxes[i]*100):0);
+  chC=new C(document.getElementById('cC'),{type:'bar',data:{
+    labels:CHECK_GROUPS.map(g=>g.grp),
+    datasets:[{label:'전체 평균(%)',data:catAvgPcts,backgroundColor:catAvgPcts.map(p=>p>=80?'rgba(22,163,74,.7)':p>=60?'rgba(202,138,4,.7)':'rgba(220,38,38,.7)'),borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',scales:{x:{min:0,max:100,ticks:{callback:v=>v+'%'}}},plugins:{legend:{display:false}}}});
+
+  renderZoneGallery();
 }
+
+/* ===== 메인 구역 갤러리 ===== */
+function renderZoneGallery(){
+  const el=document.getElementById('zoneGallery');if(!el)return;
+  const zp=SETTINGS.zonePhotos||{};
+  el.innerHTML=`<div class="zone-gallery">${ZONES.map(z=>{
+    const photos=zp[z.key]||[];
+    const photosHtml=photos.length
+      ?photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delZonePhoto('${z.key}',${i})">✕</div></div>`).join('')
+      :'<div style="color:var(--mut);font-size:13px;padding:4px 0">사진 없음</div>';
+    return`<div class="zone-card">
+      <div class="zone-card-h">
+        <span>${escHtml(z.label)}</span>
+        <span class="grow"></span>
+        <span style="font-size:12px;color:var(--mut)">${photos.length}장</span>
+        <label class="btn" style="font-size:12px;padding:4px 9px;margin-left:6px">＋ 추가<input type="file" accept="image/*" style="display:none" onchange="addZonePhoto(this,'${z.key}')"></label>
+      </div>
+      <div class="zone-card-body"><div class="zone-photos-row">${photosHtml}</div></div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+async function addZonePhoto(input,zk){
+  const f=input.files[0];if(!f)return;
+  if(!checkAdmin()){input.value='';return;}
+  if(!SETTINGS.zonePhotos)SETTINGS.zonePhotos={};
+  if(!SETTINGS.zonePhotos[zk])SETTINGS.zonePhotos[zk]=[];
+  if(SETTINGS.zonePhotos[zk].length>=6){alert('구역당 최대 6장');input.value='';return;}
+  try{
+    const d=await compressImage(f,1200,0.6);
+    let total=0;ZONES.forEach(z=>(SETTINGS.zonePhotos[z.key]||[]).forEach(p=>total+=(p.url?p.url.length:0)));
+    if(total+d.length>1800000){alert('전체 용량 초과');input.value='';return;}
+    SETTINGS.zonePhotos[zk].push({url:d,name:f.name});
+    renderZoneGallery();
+    saveSettings().catch(e=>alert('저장 실패:\n'+e.message));
+  }catch(e){alert('사진 처리 실패: '+e.message);}
+  input.value='';
+}
+async function delZonePhoto(zk,i){
+  if(!checkAdmin())return;
+  if(!confirm('삭제할까요?'))return;
+  SETTINGS.zonePhotos[zk].splice(i,1);
+  await saveSettings();renderZoneGallery();
+}
+
 async function setLayout(input){
   const f=input.files[0];if(!f)return;
   if(!checkAdmin()){input.value='';return;}
@@ -662,89 +745,66 @@ async function setLayout(input){
   }catch(e){alert('이미지 처리 실패: '+e.message);}
   input.value='';
 }
-function renderDashPhotos(){
-  const el=document.getElementById('dashPhotos');if(!el)return;
-  const ps=SETTINGS.dashPhotos||[];
-  el.innerHTML=ps.length
-    ?ps.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delDashPhoto(${i})">✕</div></div>`).join('')
-    :'<div class="hint">참고용 사진을 올려두면 여기에 고정 표시됩니다.</div>';
-}
-async function addDashPhoto(input){
-  const f=input.files[0];if(!f)return;if(!checkAdmin()){input.value='';return;}
-  SETTINGS.dashPhotos=SETTINGS.dashPhotos||[];
-  if(SETTINGS.dashPhotos.length>=6){alert('최대 6장');input.value='';return;}
-  try{
-    const d=await compressImage(f,1400,0.6);SETTINGS.dashPhotos.push({url:d,name:f.name});
-    const t=SETTINGS.dashPhotos.reduce((s,p)=>s+(p.url?p.url.length:0),0);
-    if(t>950000){SETTINGS.dashPhotos.pop();alert('용량 초과');input.value='';return;}
-    renderDashPhotos();saveSettings().catch(e=>alert('저장 실패:\n'+e.message));
-  }catch(e){alert('사진 처리 실패: '+e.message);}
-  input.value='';
-}
-async function delDashPhoto(i){
-  if(!SETTINGS.dashPhotos[i])return;if(!checkAdmin())return;
-  if(!confirm('삭제할까요?'))return;SETTINGS.dashPhotos.splice(i,1);await saveSettings();renderDashPhotos();
-}
 
 /* ===== 이력 조회 ===== */
 function openHistory(){
-  const allYms=new Set();
-  Object.keys(DB).forEach(z=>Object.keys(DB[z].records).forEach(ym=>allYms.add(ym)));
-  const yms=[...allYms].sort().reverse();
-  if(!yms.length){document.getElementById('histList').innerHTML='<div class="hint">저장된 기록이 없습니다.</div>';document.getElementById('histList').style.display='block';document.getElementById('histDetail').innerHTML='';return;}
+  const yms=Object.keys(DB).sort().reverse();
+  const listEl=document.getElementById('histList');
+  if(!yms.length){listEl.innerHTML='<div class="hint">저장된 기록이 없습니다.</div>';return;}
   let html='';
   yms.forEach(ym=>{
-    const label=ym.replace('-','년 ')+'월';
-    let rows='';
-    Object.keys(DB).sort().forEach(zone=>{
-      const rec=DB[zone].records[ym];if(!rec)return;
-      const rs=recScore(rec),pct=GRAND_MAX?Math.round(rs/GRAND_MAX*100):0;
-      const sbCls=pct>=80?'sb-hi':pct>=60?'sb-mid':rs>0?'sb-lo':'';
-      const nb=rec.before.length,na=rec.after.length;
-      const d=rec.date.d?` · ${rec.date.m||ym.split('-')[1]}/${rec.date.d}`:'';
-      const ck=rec.checker?` · ${escHtml(rec.checker)}`:'';
-      rows+=`<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line);flex-wrap:wrap">
-        <span class="badge zone">${escHtml(zone)}</span>
-        <span class="unit">${d}${ck}</span>
-        <span class="score-badge ${sbCls}">${rs}/${GRAND_MAX}점 (${pct}%)</span>
+    const rec=DB[ym];
+    const rs=recScore(rec),pct=GRAND_MAX?Math.round(rs/GRAND_MAX*100):0;
+    const sbCls=pct>=80?'sb-hi':pct>=60?'sb-mid':rs>0?'sb-lo':'';
+    const d=rec.date;
+    const dateStr=d.d?`${d.y||ym.split('-')[0]}.${String(d.m||(+ym.split('-')[1])).padStart(2,'0')}.${String(d.d).padStart(2,'0')}`:ym;
+    let totalPh=0;ZONES.forEach(z=>{const zz=(rec.zonePhotos||{})[z.key]||{};totalPh+=(zz.before||[]).length+(zz.after||[]).length;});
+    html+=`<div class="sec" style="margin-bottom:10px">
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 14px;flex-wrap:wrap">
+        <span style="font-size:16px;font-weight:800">📅 ${ym.replace('-','년 ')}월</span>
+        <span class="unit">${dateStr}</span>
+        ${rec.checker?`<span class="unit">· ${escHtml(rec.checker)}</span>`:''}
+        <span class="score-badge ${sbCls}" style="font-size:13px">${rs}/${GRAND_MAX}점 (${pct}%)</span>
         <span class="grow"></span>
-        <span class="unit">${nb?'🔴'+nb:''}${na?' 🟢'+na:''}</span>
-        <button class="btn" style="padding:4px 10px;font-size:13px" onclick="viewRecord(${JSON.stringify(zone).replace(/"/g,'&quot;')},'${ym}')">보기</button>
-        <button class="btn" style="padding:4px 10px;font-size:13px;color:#22c55e;border-color:#555" onclick="editRecord(${JSON.stringify(zone).replace(/"/g,'&quot;')},'${ym}')">수정</button>
-        <button class="btn" style="padding:4px 8px;font-size:13px;color:var(--ng);border-color:#555" onclick="deleteRecord(${JSON.stringify(zone).replace(/"/g,'&quot;')},'${ym}')">🗑</button>
-      </div>`;
-    });
-    html+=`<div class="sec" style="margin-bottom:10px"><div class="sec-h" style="font-size:16px">📅 ${label}</div>${rows}</div>`;
+        ${totalPh?`<span class="unit">📷 ${totalPh}장</span>`:''}
+        <button class="btn" style="padding:5px 11px;font-size:13px" onclick="viewRecord('${ym}')">보기</button>
+        <button class="btn" style="padding:5px 11px;font-size:13px;color:#22c55e;border-color:#555" onclick="editRecord('${ym}')">수정</button>
+        <button class="btn" style="padding:5px 9px;font-size:13px;color:var(--ng);border-color:#555" onclick="deleteRecord('${ym}')">🗑</button>
+      </div>
+    </div>`;
   });
-  document.getElementById('histList').innerHTML=html;document.getElementById('histList').style.display='block';document.getElementById('histDetail').innerHTML='';
+  listEl.innerHTML=html;
+  listEl.style.display='block';
+  document.getElementById('histDetail').innerHTML='';
 }
-function viewRecord(zone,id){
+
+function viewRecord(ym){
   document.getElementById('histList').style.display='none';
   document.getElementById('histDetail').innerHTML=
     `<div class="rep-tools">
        <button class="btn" onclick="backToList()">‹ 목록</button>
-       <button class="btn" style="background:#16a34a;color:#fff;border-color:#16a34a" onclick="editRecord(${JSON.stringify(zone).replace(/"/g,'&quot;')},'${id}')">✏️ 수정하기</button>
+       <button class="btn" style="background:#16a34a;color:#fff;border-color:#16a34a" onclick="editRecord('${ym}')">✏️ 수정하기</button>
        <button class="btn pri" onclick="window.print()">🖨 인쇄 / PDF 저장</button>
      </div>
-     <div id="repArea" class="rep-area">${buildStatic(zone,id)}</div>`;
+     <div id="repArea">${buildStatic(ym)}</div>`;
 }
-function editRecord(zone,id){curZone=zone;renderZoneTabs();refreshRecSelect();loadRecord(id);showView('input');}
+function editRecord(ym){loadRecord(ym);showView('input');}
 function backToList(){document.getElementById('histDetail').innerHTML='';document.getElementById('histList').style.display='block';}
-async function deleteRecord(zone,id){
+async function deleteRecord(ym){
   if(!checkAdmin())return;
-  if(!confirm(`[${zone}] ${id.replace('-','년 ')}월 기록을 삭제할까요?\n되돌릴 수 없습니다.`))return;
-  try{await db.collection(COL).doc(docId(zone,id)).delete();delete DB[zone].records[id];openHistory();}
+  if(!confirm(`${ym.replace('-','년 ')}월 기록을 삭제할까요?\n되돌릴 수 없습니다.`))return;
+  try{await db.collection(COL).doc(docId(ym)).delete();delete DB[ym];openHistory();}
   catch(e){alert('삭제 실패: '+e.message);}
 }
 
 /* ===== 인쇄용 정적 보기 ===== */
-function buildStatic(zone,id){
-  const rec=DB[zone]&&DB[zone].records[id];if(!rec)return'';
+function buildStatic(ym){
+  const rec=DB[ym];if(!rec)return'';
   const rs=recScore(rec),pct=GRAND_MAX?Math.round(rs/GRAND_MAX*100):0;
   const d=rec.date;
   let html=`<div class="rep-head">
-    ■ 3정5S 점검표 · ${escHtml(zone)}<br>
-    점검일: ${d.y||id.split('-')[0]}년 ${d.m||(+id.split('-')[1])}월 ${d.d||''}일
+    ■ 3정5S 점검표 · ${ym.replace('-','년 ')}월&nbsp;&nbsp;
+    점검일: ${d.y||ym.split('-')[0]}년 ${d.m||(+ym.split('-')[1])}월 ${d.d||''}일
     ${rec.checker?` &nbsp; 점검자: ${escHtml(rec.checker)}`:''}
     &nbsp; <span class="score-badge ${pct>=80?'sb-hi':pct>=60?'sb-mid':rs>0?'sb-lo':''}" style="font-size:13px">${rs}/${GRAND_MAX}점 (${pct}%)</span>
   </div>`;
@@ -756,8 +816,7 @@ function buildStatic(zone,id){
     const gpct=grpMax?Math.round(grpScore/grpMax*100):0;
     let rows='';
     grp.items.forEach((item,ii)=>{
-      const d2=rec.checklist[ci+'_'+ii]||{};
-      const sc=d2.score||0;
+      const d2=rec.checklist[ci+'_'+ii]||{};const sc=d2.score||0;
       const scColor=sc>=4?'#16a34a':sc===3?'#ca8a04':sc>0?'#dc2626':'#374151';
       const scBg=sc>=4?'var(--okbg)':sc===3?'#2d2200':sc>0?'var(--ngbg)':'transparent';
       rows+=`<tr>
@@ -778,22 +837,28 @@ function buildStatic(zone,id){
     </table></div></div>`;
   });
 
-  const baHtml=(label,arr)=>arr.length?`<div class="rep-sec"><div class="rep-sech">${label}</div><div class="photos" style="padding:8px">${arr.map(p=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"></div>`).join('')}</div></div>`:'';
-  html+=baHtml('🔴 조치 전',rec.before);
-  html+=baHtml('🟢 조치 후',rec.after);
+  /* 구역별 사진 */
+  const zp=rec.zonePhotos||{};
+  ZONES.forEach(z=>{
+    const zz=zp[z.key]||{before:[],after:[]};
+    const tot=(zz.before||[]).length+(zz.after||[]).length;
+    if(!tot)return;
+    html+=`<div class="rep-sec"><div class="rep-sech">📷 ${escHtml(z.label)}</div><div class="ba">`;
+    if((zz.before||[]).length)html+=`<div><div style="font-weight:700;color:#fca5a5;padding:6px 0">🔴 조치 전</div><div class="photos">${(zz.before||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"></div>`).join('')}</div></div>`;
+    if((zz.after||[]).length)html+=`<div><div style="font-weight:700;color:#86efac;padding:6px 0">🟢 조치 후</div><div class="photos">${(zz.after||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"></div>`).join('')}</div></div>`;
+    html+='</div></div>';
+  });
+
   return html;
 }
 
 /* ===== 시작 ===== */
-function initZone(){
-  const zones=SETTINGS.zones||[];
-  if(zones.length){curZone=zones.includes(curZone)?curZone:zones[0];switchZone(curZone);}
-  else{curZone='';curRecId='';renderZoneTabs();}
-}
 (async function init(){
   if(!fbInit())return;
   try{await loadAll();}catch(e){showOverlay('데이터 불러오기 실패:<br>'+e.message);return;}
-  initZone();showView('dash');hideOverlay();
+  const ids=Object.keys(DB).sort();
+  if(ids.length)curRecId=ids[ids.length-1];
+  refreshRecSelect();showView('dash');hideOverlay();
 })();
 </script>
 </body>
