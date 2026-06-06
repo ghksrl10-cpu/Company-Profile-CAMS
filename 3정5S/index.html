@@ -199,6 +199,16 @@
         <div id="layoutEmpty" class="hint">＋ 버튼으로 구획별 LAY-OUT 이미지를 등록하면 여기에 고정 표시됩니다.</div>
       </div>
 
+      <!-- 조직도 -->
+      <div class="chart-box" style="margin-bottom:18px">
+        <h3>👥 조직도
+          <span class="grow"></span>
+          <label class="btn pri" style="font-size:13px;padding:6px 12px">＋ 조직도 등록/교체<input type="file" accept="image/*" style="display:none" onchange="setOrgChart(this)"></label>
+        </h3>
+        <img id="orgImg" src="" onclick="this.src&&window.open(this.src,'_blank')" style="display:none;width:100%;border:1px solid var(--bd);border-radius:8px;cursor:pointer;background:#0b0d12">
+        <div id="orgEmpty" class="hint">＋ 버튼으로 조직도 이미지를 등록하면 여기에 고정 표시됩니다.</div>
+      </div>
+
       <!-- 통계 카드 -->
       <div class="cards" id="cards"></div>
 
@@ -295,6 +305,7 @@ const COL = 'fivees';
 const SETTINGS_DOC = 'fivees';
 const LAYOUT_DOC = 'fivees_layout';
 const IMP_COL = 'improvements';
+const ORG_DOC = 'fivees_org';
 </script>
 <script>
 /* ===== 체크리스트 (185점 만점) ===== */
@@ -416,6 +427,11 @@ async function loadAll(){
     const sl=await db.collection('settings').doc(LAYOUT_DOC).get();
     if(sl.exists&&sl.data().layout)SETTINGS.layout=sl.data().layout;
   }catch(e){}
+  try{
+    const so=await db.collection('settings').doc(ORG_DOC).get();
+    if(so.exists&&so.data().orgChart)SETTINGS.orgChart=so.data().orgChart;
+  }catch(e){}
+  if(!SETTINGS.orgChart)SETTINGS.orgChart='';
   if(!SETTINGS.zonePhotos)SETTINGS.zonePhotos={};
   ZONES.forEach(z=>{if(!SETTINGS.zonePhotos[z.key])SETTINGS.zonePhotos[z.key]=[];});
   if(SETTINGS.layout===undefined)SETTINGS.layout='';
@@ -434,6 +450,10 @@ async function saveSettings(){
 async function saveLayout(){
   if(!db)return;
   await db.collection('settings').doc(LAYOUT_DOC).set({layout:SETTINGS.layout||''});
+}
+async function saveOrgChart(){
+  if(!db)return;
+  await db.collection('settings').doc(ORG_DOC).set({orgChart:SETTINGS.orgChart||''});
 }
 
 async function saveRecord(ym){
@@ -704,6 +724,10 @@ function renderDash(){
   const img=document.getElementById('layoutImg'),em=document.getElementById('layoutEmpty');
   if(SETTINGS.layout){img.src=SETTINGS.layout;img.style.display='block';em.style.display='none';}
   else{img.style.display='none';em.style.display='block';}
+  /* 조직도 */
+  const oi=document.getElementById('orgImg'),oe=document.getElementById('orgEmpty');
+  if(SETTINGS.orgChart){oi.src=SETTINGS.orgChart;oi.style.display='block';oe.style.display='none';}
+  else{oi.style.display='none';oe.style.display='block';}
 
   const s=computeStats();
   const avgPct=s.maxTotal?Math.round(s.total/s.maxTotal*100):0;
@@ -796,6 +820,16 @@ async function setLayout(input){
     const d=await compressImage(f,1400,0.55);
     SETTINGS.layout=d;renderDash();
     saveLayout().catch(e=>alert('클라우드 저장 실패:\n'+e.message));
+  }catch(e){alert('이미지 처리 실패: '+e.message);}
+  input.value='';
+}
+async function setOrgChart(input){
+  const f=input.files[0];if(!f)return;
+  if(!checkAdmin()){input.value='';return;}
+  try{
+    const d=await compressImage(f,1400,0.55);
+    SETTINGS.orgChart=d;renderDash();
+    saveOrgChart().catch(e=>alert('클라우드 저장 실패:\n'+e.message));
   }catch(e){alert('이미지 처리 실패: '+e.message);}
   input.value='';
 }
