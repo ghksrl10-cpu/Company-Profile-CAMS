@@ -383,6 +383,13 @@ const ZONES = [
   {key:'D', label:'D구역 (도장)'},
   {key:'E', label:'E구역 (C/PAD)'},
 ];
+const IMP_ZONES = [
+  'A구역-사출',
+  'B구역-1/2LINE B/P조립',
+  'C구역-보전반',
+  'D구역-도장',
+  'E구역-3공장 C/PAD',
+];
 
 /* ===== 상태 ===== */
 let curRecId='', curPhotoZone='A', DB={}, db=null;
@@ -990,8 +997,10 @@ function openImprovForm(id){
     <div class="frow">
       <label>개선번호<input id="imp_no" value="${escHtml(r.no)}" placeholder="예) 2501-01"></label>
       <label style="flex:2">공정명
-        <div class="zone-chips" id="impZoneChips">${ZONES.map(z=>`<button type="button" class="zchip${r.process&&r.process.includes(z.key+'구역')?' active':''}" onclick="pickZone(this,'${z.label}')">${z.key}구역</button>`).join('')}</div>
-        <input id="imp_proc" value="${escHtml(r.process)}" placeholder="구역 선택 또는 직접 입력">
+        <select id="imp_proc" style="width:100%;padding:8px 10px;background:#0c1422;border:1px solid var(--bd);border-radius:8px;color:var(--txt);font-size:14px;margin-top:4px">
+          <option value="">-- 구역 선택 --</option>
+          ${IMP_ZONES.map(z=>`<option value="${z}"${r.process===z?' selected':''}>${z}</option>`).join('')}
+        </select>
       </label>
       <label style="flex:2">담당자<input id="imp_worker" value="${escHtml(r.worker)}" placeholder="예) 최연상 팀장"></label>
       <label>발췌일<input id="imp_date" value="${escHtml(r.date)}" placeholder="예) 2025-01-15"></label>
