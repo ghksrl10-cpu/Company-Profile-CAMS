@@ -669,7 +669,7 @@ function renderDash(){
   chM=new C(document.getElementById('cM'),{type:'line',data:{
     labels:ms.length?ms.map(m=>m.replace('-','.')):['데이터 없음'],
     datasets:[{label:'점수',data:ms.map(m=>d100(s.months[m])),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
-    options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:50,max:100,ticks:{callback:v=>v+'점'}}},plugins:{legend:{position:'bottom'}}}});
+    options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:50,max:100,ticks:{stepSize:10,callback:v=>v+'점'}}},plugins:{legend:{position:'bottom'}}}});
 
   const catMaxes=CHECK_GROUPS.map(g=>g.items.length*5);
   const latestCatPcts=CHECK_GROUPS.map((_,ci)=>{
