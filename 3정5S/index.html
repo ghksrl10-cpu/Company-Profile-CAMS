@@ -323,6 +323,7 @@ const CHECK_GROUPS = [
   ]},
 ];
 const GRAND_MAX = CHECK_GROUPS.reduce((s,g)=>s+g.items.length*5,0); // 185
+function d100(raw){return GRAND_MAX?Math.round(raw/GRAND_MAX*100):0;}
 
 /* 구역 정의 */
 const ZONES = [
@@ -514,7 +515,7 @@ function render(){
   const sumDiv=document.createElement('div');sumDiv.className='sec';
   sumDiv.innerHTML=`<div class="sec-h" style="font-size:16px">
     📊 합계 점수
-    <span class="score-badge ${total/GRAND_MAX>=0.8?'sb-hi':total/GRAND_MAX>=0.6?'sb-mid':total>0?'sb-lo':''}" style="font-size:14px;padding:4px 14px">${total} / ${GRAND_MAX}점 (${pct}%)</span>
+    <span class="score-badge ${total/GRAND_MAX>=0.8?'sb-hi':total/GRAND_MAX>=0.6?'sb-mid':total>0?'sb-lo':''}" style="font-size:14px;padding:4px 14px">${d100(total)}점 / 100점</span>
   </div>`;
   root.appendChild(sumDiv);
 
@@ -657,7 +658,7 @@ function renderDash(){
 
   document.getElementById('cards').innerHTML=`
     <div class="card"><div class="ic b">📋</div><div class="num">${s.recCount}</div><div class="lab">총 기록(월) 수</div></div>
-    <div class="card"><div class="ic g">⭐</div><div class="num">${s.latestScore||'-'}<small style="font-size:13px;font-weight:600"> /185</small></div><div class="lab">최근 점수</div></div>
+    <div class="card"><div class="ic g">⭐</div><div class="num">${s.latestScore?d100(s.latestScore):'-'}<small style="font-size:13px;font-weight:600"> /100</small></div><div class="lab">최근 점수</div></div>
     <div class="card"><div class="ic y">📊</div><div class="num">${avgPct}%</div><div class="lab">전체 평균</div></div>
     <div class="card"><div class="ic b">📅</div><div class="num" style="font-size:18px">${s.latestYm||'-'}</div><div class="lab">최근 점검월</div></div>`;
 
@@ -667,8 +668,8 @@ function renderDash(){
 
   chM=new C(document.getElementById('cM'),{type:'line',data:{
     labels:ms.length?ms.map(m=>m.replace('-','.')):['데이터 없음'],
-    datasets:[{label:'점수',data:ms.map(m=>s.months[m]),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
-    options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:185,ticks:{callback:v=>v+'점'}}},plugins:{legend:{position:'bottom'}}}});
+    datasets:[{label:'점수',data:ms.map(m=>d100(s.months[m])),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
+    options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:100,ticks:{callback:v=>v+'점'}}},plugins:{legend:{position:'bottom'}}}});
 
   const catMaxes=CHECK_GROUPS.map(g=>g.items.length*5);
   const latestCatPcts=CHECK_GROUPS.map((_,ci)=>{
@@ -764,7 +765,7 @@ function openHistory(){
         <span style="font-size:16px;font-weight:800">📅 ${ym.replace('-','년 ')}월</span>
         <span class="unit">${dateStr}</span>
         ${rec.checker?`<span class="unit">· ${escHtml(rec.checker)}</span>`:''}
-        <span class="score-badge ${sbCls}" style="font-size:13px">${rs}/${GRAND_MAX}점 (${pct}%)</span>
+        <span class="score-badge ${sbCls}" style="font-size:13px">${d100(rs)}점 / 100점</span>
         <span class="grow"></span>
         ${totalPh?`<span class="unit">📷 ${totalPh}장</span>`:''}
         <button class="btn" style="padding:5px 11px;font-size:13px" onclick="viewRecord('${ym}')">보기</button>
@@ -806,7 +807,7 @@ function buildStatic(ym){
     ■ 3정5S 점검표 · ${ym.replace('-','년 ')}월&nbsp;&nbsp;
     점검일: ${d.y||ym.split('-')[0]}년 ${d.m||(+ym.split('-')[1])}월 ${d.d||''}일
     ${rec.checker?` &nbsp; 점검자: ${escHtml(rec.checker)}`:''}
-    &nbsp; <span class="score-badge ${pct>=80?'sb-hi':pct>=60?'sb-mid':rs>0?'sb-lo':''}" style="font-size:13px">${rs}/${GRAND_MAX}점 (${pct}%)</span>
+    &nbsp; <span class="score-badge ${pct>=80?'sb-hi':pct>=60?'sb-mid':rs>0?'sb-lo':''}" style="font-size:13px">${d100(rs)}점 / 100점</span>
   </div>`;
 
   let no=1;
