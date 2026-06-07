@@ -155,6 +155,9 @@
 <body>
 <div id="overlay">불러오는 중…</div>
 <div class="scrim" id="scrim" onclick="toggleNav(false)"></div>
+<div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;align-items:center;justify-content:center;cursor:zoom-out">
+  <img id="lbImg" style="max-width:95vw;max-height:95vh;object-fit:contain;border-radius:10px;box-shadow:0 0 40px rgba(0,0,0,.8)">
+</div>
 
 <div class="app">
   <aside class="side" id="side">
@@ -200,7 +203,7 @@
           <span class="grow"></span>
           <label class="btn pri" style="font-size:13px;padding:6px 12px">＋ 레이아웃 등록/교체<input type="file" accept="image/*" style="display:none" onchange="setLayout(this)"></label>
         </h3>
-        <img id="layoutImg" src="" onclick="this.src&&window.open(this.src,'_blank')" style="display:none">
+        <img id="layoutImg" src="" onclick="this.src&&showLightbox(this.src)" style="display:none;cursor:zoom-in">
         <div id="layoutEmpty" class="hint">＋ 버튼으로 구획별 LAY-OUT 이미지를 등록하면 여기에 고정 표시됩니다.</div>
       </div>
 
@@ -210,7 +213,7 @@
           <span class="grow"></span>
           <label class="btn pri" style="font-size:13px;padding:6px 12px">＋ 조직도 등록/교체<input type="file" accept="image/*" style="display:none" onchange="setOrgChart(this)"></label>
         </h3>
-        <img id="orgImg" src="" onclick="this.src&&window.open(this.src,'_blank')" style="display:none;width:100%;border:1px solid var(--bd);border-radius:8px;cursor:pointer;background:#0b0d12">
+        <img id="orgImg" src="" onclick="this.src&&showLightbox(this.src)" style="display:none;width:100%;border:1px solid var(--bd);border-radius:8px;cursor:zoom-in;background:#0b0d12">
         <div id="orgEmpty" class="hint">＋ 버튼으로 조직도 이미지를 등록하면 여기에 고정 표시됩니다.</div>
       </div>
 
@@ -409,6 +412,8 @@ function checkAdmin(){
 }
 function docId(ym){return'rec__'+ym;}
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function showLightbox(url){const lb=document.getElementById('lightbox');document.getElementById('lbImg').src=url;lb.style.display='flex';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const lb=document.getElementById('lightbox');if(lb)lb.style.display='none';}});
 
 /* ===== Firebase ===== */
 function fbInit(){
@@ -628,7 +633,7 @@ function baBox(zk,which,label,photos){
   return`<div class="ba-box ${which}"><div class="ba-h">${label}</div>
     <div class="ba-body">
       <label class="btn pri" style="font-size:13px;padding:7px 12px">＋ 촬영 / 추가<input type="file" accept="image/*" capture="environment" style="display:none" onchange="addPhoto(this,'${zk}','${which}')"></label>
-      <div class="photos">${photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delPhoto('${zk}','${which}',${i})">✕</div></div>`).join('')}</div>
+      <div class="photos">${photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="showLightbox('${p.url}')"><div class="del" onclick="delPhoto('${zk}','${which}',${i})">✕</div></div>`).join('')}</div>
     </div></div>`;
 }
 
@@ -788,7 +793,7 @@ function renderZoneGallery(){
   el.innerHTML=`<div class="zone-gallery">${ZONES.map(z=>{
     const photos=zp[z.key]||[];
     const photosHtml=photos.length
-      ?photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"><div class="del" onclick="delZonePhoto('${z.key}',${i})">✕</div></div>`).join('')
+      ?photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="showLightbox('${p.url}')"><div class="del" onclick="delZonePhoto('${z.key}',${i})">✕</div></div>`).join('')
       :'<div style="color:var(--mut);font-size:13px;padding:4px 0">사진 없음</div>';
     return`<div class="zone-card">
       <div class="zone-card-h">
@@ -944,8 +949,8 @@ function buildStatic(ym){
     const tot=(zz.before||[]).length+(zz.after||[]).length;
     if(!tot)return;
     html+=`<div class="rep-sec"><div class="rep-sech">📷 ${escHtml(z.label)}</div><div class="ba">`;
-    if((zz.before||[]).length)html+=`<div><div style="font-weight:700;color:#fca5a5;padding:6px 0">🔴 조치 전</div><div class="photos">${(zz.before||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"></div>`).join('')}</div></div>`;
-    if((zz.after||[]).length)html+=`<div><div style="font-weight:700;color:#86efac;padding:6px 0">🟢 조치 후</div><div class="photos">${(zz.after||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')"></div>`).join('')}</div></div>`;
+    if((zz.before||[]).length)html+=`<div><div style="font-weight:700;color:#fca5a5;padding:6px 0">🔴 조치 전</div><div class="photos">${(zz.before||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="showLightbox('${p.url}')"></div>`).join('')}</div></div>`;
+    if((zz.after||[]).length)html+=`<div><div style="font-weight:700;color:#86efac;padding:6px 0">🟢 조치 후</div><div class="photos">${(zz.after||[]).map(p=>`<div class="ph"><img src="${p.url}" onclick="showLightbox('${p.url}')"></div>`).join('')}</div></div>`;
     html+='</div></div>';
   });
 
@@ -1038,7 +1043,7 @@ function openImprovForm(id){
 
 function impPhotoBox(type,label,photos,desc){
   const cls=type==='before'?'bef':type==='temp'?'tmp':'root';
-  const photosHtml=photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="window.open('${p.url}','_blank')" style="width:100px;height:75px;object-fit:cover;border-radius:6px;border:1px solid var(--bd)"><div class="del" onclick="delImprovPhoto('${type}',${i})">✕</div></div>`).join('');
+  const photosHtml=photos.map((p,i)=>`<div class="ph"><img src="${p.url}" onclick="showLightbox('${p.url}')" style="width:100px;height:75px;object-fit:cover;border-radius:6px;border:1px solid var(--bd)"><div class="del" onclick="delImprovPhoto('${type}',${i})">✕</div></div>`).join('');
   return`<div class="impr-ba-box ${cls}">
     <h4>${label}</h4>
     <label class="btn" style="font-size:12px;padding:5px 10px;display:inline-flex;align-items:center;gap:5px;cursor:pointer">
